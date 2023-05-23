@@ -5,13 +5,17 @@ import bodyParser from "body-parser";
 import express from "express";
 
 import { config } from "./config";
-import { healthRouter } from "./health/health-router";
+import { musicRouter } from "./musics/infrastructure/music-router";
+import { podcastRouter } from "./podcast/infrastructure/podcast-router";
+import { userRouter } from "./user/infrastructure/user-router";
 
 function boostrap() {
   const app = express();
 
   app.use(bodyParser.json());
-  app.use("/health", healthRouter);
+  app.use("/users", userRouter);
+  app.use("/music", musicRouter);
+  app.use("/podcast", podcastRouter);
 
   const { port } = config.server;
 
