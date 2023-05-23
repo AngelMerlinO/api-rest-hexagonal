@@ -10,16 +10,20 @@ export class RegisterPodcast {
     podcastDuration: number,
     podcastCategoria: string
   ) {
-    const podcast = await this.addPodcast.addPodcast(
-      podcastId,
-      podcastName,
-      podcastProducer,
-      podcastDuration,
-      podcastCategoria
-    );
-    if (!podcast) {
-      throw new Error(`podcast ${podcastName} no agregado`);
+    try {
+      const podcast = await this.addPodcast.addPodcast(
+        podcastId,
+        podcastName,
+        podcastProducer,
+        podcastDuration,
+        podcastCategoria
+      );
+      if (!podcast) {
+        throw new Error(`podcast ${podcastName} no agregado`);
+      }
+      return podcast;
+    } catch (error) {
+      throw error;
     }
-    return podcast;
   }
 }

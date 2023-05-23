@@ -21,8 +21,18 @@ export class PodcastRepository implements AddPodcast {
         podcastCategoria,
       ];
       await connection.query(query, values);
-      // Devolver el resultado esperado (en este caso, un objeto Podcast o null)
-      return null;
+
+      // Crear un objeto Podcast con las propiedades correspondientes
+      const podcast = new Podcast(
+        podcastId,
+        podcastName,
+        podcastProducer,
+        podcastDuration,
+        podcastCategoria
+      );
+
+      // Devolver el objeto Podcast
+      return podcast;
     } catch (error) {
       // Manejar cualquier error que ocurra durante la operación
       throw new Error(`Error al agregar el nuevo podcast: ${error}`);

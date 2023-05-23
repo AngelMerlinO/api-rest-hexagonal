@@ -12,8 +12,6 @@ export class PodcastController {
     const podcastDuration = req.body.duration;
     const podcastCategoria = req.body.categoria;
 
-    console.log("holA", req.body.id);
-
     const resultado = await this.registerPodcast.agregarPodcast(
       podcastId,
       podcastName,
@@ -21,7 +19,7 @@ export class PodcastController {
       podcastDuration,
       podcastCategoria
     );
-
-    res.status(200).send(`Usuario ${resultado} registrado con éxito`);
+    console.log("controller", resultado.name);
+    res.status(200).send(`Usuario ${resultado.name} registrado con éxito`);
   }
 }
