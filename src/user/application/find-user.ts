@@ -1,6 +1,6 @@
 import { GetUser } from "../domain/get-user";
 
-export class BienvenidaSender {
+export class FindUser {
   constructor(private readonly getUser: GetUser) {}
 
   async run(userId: number) {
